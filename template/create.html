@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  <div class="page-section">
+    <div class="container">
+      <h1 class="text-center wow fadeInUp">Add product</h1>
+
+      {% if success_message %}
+      {% for i in success_message %}
+      {{i}}
+      {% endfor %}
+      {% endif %}
+      <form class="contact-form mt-5" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+      
+        {% for fm in form %}
+            {{fm.label_tag}} {{fm}}  <br><br>
+            <small style="color:red;">{{fm.errors|striptags}}</small>
+            {% endfor %}
+        <button type="submit" class="btn btn-primary wow zoomIn"> Submit</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
